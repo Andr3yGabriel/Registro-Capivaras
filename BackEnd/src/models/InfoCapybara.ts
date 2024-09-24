@@ -10,19 +10,19 @@ export class InfoCapybara {
     name: string;
 
     @Column("int")
-    age: number
+    age: number;
 
     @Column("int")
-    weight: number
+    weight: number;
 
     @Column({type: "varchar", width: 40})
-    healthStatus: string
+    healthStatus: string;
 
     @Column("varchar")
-    behavior: string
+    behavior: string;
 
     @Column("varchar")
-    observations: string
+    observations: string;
 
     @OneToMany(() => PhotoCapybara, (photo) => photo.capybara)
     photos: PhotoCapybara[]
