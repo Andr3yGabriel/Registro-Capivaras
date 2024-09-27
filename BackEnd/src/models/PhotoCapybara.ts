@@ -4,10 +4,10 @@ import { InfoCapybara } from "./InfoCapybara";
 @Entity()
 export class PhotoCapybara {
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
     @Column("varchar")
-    url: string
+    url: string;
 
     @ManyToOne(() => InfoCapybara, (capybara) => capybara.photos)
     capybara: InfoCapybara;

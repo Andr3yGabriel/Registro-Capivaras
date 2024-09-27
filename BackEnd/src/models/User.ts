@@ -1,5 +1,6 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import * as bcrypt from 'bcrypt';
+import { InfoCapybara } from "./InfoCapybara";
 
 @Entity()
 export class User {
@@ -14,6 +15,9 @@ export class User {
 
     @Column({type: "varchar"})
     password: string
+
+    @OneToMany(() => InfoCapybara, (capybaras) => capybaras.id)
+    capybaras: InfoCapybara[]
 
     @BeforeInsert()
     @BeforeUpdate()

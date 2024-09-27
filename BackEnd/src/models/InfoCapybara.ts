@@ -1,5 +1,6 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { PhotoCapybara } from "./PhotoCapybara";
+import { User } from "./User";
 
 @Entity()
 export class InfoCapybara {
@@ -16,6 +17,9 @@ export class InfoCapybara {
     weight: number;
 
     @Column({type: "varchar", width: 40})
+    habitat: string
+
+    @Column({type: "varchar", width: 40})
     healthStatus: string;
 
     @Column("varchar")
@@ -25,5 +29,8 @@ export class InfoCapybara {
     observations: string;
 
     @OneToMany(() => PhotoCapybara, (photo) => photo.capybara)
-    photos: PhotoCapybara[]
+    photos: PhotoCapybara[];
+
+    @ManyToOne(() => User, (user) => user.id)
+    user: User;
 }
